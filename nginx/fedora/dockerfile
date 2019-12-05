@@ -1,0 +1,12 @@
+FROM fedora:30
+
+LABEL maintainer: Damian Malikiah McCarthy
+
+RUN dnf -y update && dnf -y install nginx
+RUN echo "daemon off;" >> /etc/nginx/nginx.conf
+RUN sed -i 's/types_hash_max_size 2048;/types_hash_max_size 4096;/' /etc/nginx/nginx.conf
+
+RUN chown -R nginx:nginx /usr/share/nginx/html
+
+EXPOSE 80
+CMD ["nginx"]

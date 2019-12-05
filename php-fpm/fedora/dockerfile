@@ -1,0 +1,11 @@
+FROM fedora:30
+
+LABEL maintainer: Damian Malikiah McCarthy
+
+RUN dnf -y update && dnf -y install php php-cli php-fpm php-mysqlnd php-zip php-devel php-gd php-mcrypt php-mbstring php-curl php-xml php-pear php-bcmath php-json
+
+RUN mkdir -p /var/run/php-fpm
+RUN mkdir -p /var/run/php
+
+EXPOSE 9000
+ENTRYPOINT /usr/sbin/php-fpm -F

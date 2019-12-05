@@ -1,0 +1,8 @@
+FROM php:rc-fpm-alpine
+
+LABEL maintainer: Damian Malikiah McCarthy
+
+RUN adduser -s /bin/false nginx -D
+
+EXPOSE 9000
+ENTRYPOINT /usr/sbin/php-fpm -F
